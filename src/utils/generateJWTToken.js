@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
 
-const generateJWTToken = (userId) => {
+const generateJWTToken = (userData) => {
   const jwtSecret = process.env.JWT_SECRET;
   const jwtConfig = { algorithm: 'HS256' };
 
-  const token = jwt.sign({ data: { userId } }, jwtSecret, jwtConfig);
+  const token = jwt.sign({ data: userData }, jwtSecret, jwtConfig);
 
   return token;
 };

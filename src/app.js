@@ -1,5 +1,7 @@
 const express = require('express');
 const login = require('./controllers/login');
+const validateSignUp = require('./middlewares/validateSignUp');
+const signUp = require('./controllers/singUp');
 
 // ...
 
@@ -13,5 +15,6 @@ app.get('/', (_request, response) => {
 app.use(express.json());
 
 app.post('/login', login);
+app.post('/user', validateSignUp, signUp);
 
 module.exports = app;

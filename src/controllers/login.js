@@ -17,7 +17,7 @@ const login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid fields' });
     }
 
-    const token = generateJWTToken(user.id);
+    const token = generateJWTToken(user.email);
 
     return res.status(200).json({ token });
   } catch (e) {
