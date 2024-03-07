@@ -3,7 +3,7 @@ const generateJWTToken = require('../utils/generateJWTToken');
 
 const signUp = async (req, res) => {
   try {
-    await userService.createUser(req.body);
+    await userService.create(req.body);
 
     const { email } = req.body;
     const token = generateJWTToken(email);

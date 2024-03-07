@@ -8,11 +8,11 @@ const getById = (id) => User.findOne({ where: { id }, attributes: noPassword });
 
 const getByEmail = (email) => User.findOne({ where: { email } });
 
-const createUser = (user) => User.create(user);
+const create = (user) => User.create(user);
 
 module.exports = {
   getAll,
   getById,
   getByEmail,
-  createUser,
+  create,
 };

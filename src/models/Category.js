@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
       id: { type: DataTypes.INTEGER, primaryKey: true },
       name: DataTypes.STRING,
     },
+    {
+      timestamps: false,
+      tableName: 'categories',
+    }
   );
 
   return Category;
