@@ -1,6 +1,8 @@
 const { User } = require('../models');
 
-const getAll = () => User.findAll();
+const getAll = () => User.findAll({
+  attributes: { exclude: 'password' },
+});
 
 const getById = (id) => User.findByPk(id);
 
