@@ -3,7 +3,7 @@ const login = require('./controllers/login');
 const validateSignUp = require('./middlewares/validateSignUp');
 const signUp = require('./controllers/singUp');
 const validateJWTToken = require('./middlewares/validateJWTToken');
-const getUsers = require('./controllers/getUsers');
+const { getUsers, getUserById } = require('./controllers/user.controller');
 
 // ...
 
@@ -22,5 +22,6 @@ app.post('/user', validateSignUp, signUp);
 app.use(validateJWTToken);
 
 app.get('/user', getUsers);
+app.get('/user/:id', getUserById);
 
 module.exports = app;
