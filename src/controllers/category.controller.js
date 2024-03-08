@@ -12,13 +12,8 @@ const getAll = async (_req, res) => {
 const create = async (req, res) => {
   try {
     const newCategory = req.body;
-
-    if (!newCategory.name) return res.status(400).json({ message: '"name" is required' });
-
-    await categoryService.create(newCategory);
-    const newCategoryOnDb = await categoryService.getByName(newCategory.name);
-
-    res.status(201).json(newCategoryOnDb);
+    const insertedCategory = await categoryService.create(newCategory);
+    res.status(201).json(insertedCategory);
   } catch (e) {
     res.status(500).json({ message: 'Something went wrong', error: e });
   }

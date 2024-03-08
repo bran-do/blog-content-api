@@ -1,9 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { userService } = require('../services');
-
-function getTokenFromBearer(bearerToken) {
-  return bearerToken.split(' ')[1];
-}
+const getTokenFromBearer = require('../utils/getTokenFromBearer');
 
 const validateJWTToken = async (req, res, next) => {
   const bearerToken = req.header('Authorization');
@@ -16,7 +13,7 @@ const validateJWTToken = async (req, res, next) => {
   try {
     const jwtSecret = process.env.JWT_SECRET;
     const decodedToken = jwt.verify(jwtToken, jwtSecret);
-    const user = await userService.getByEmail(decodedToken.data);
+    const user = await userService.getById(decodedToken.userId);
 
     if (!user) {
       return res.status(401).json({ message: 'Token references to no user' });
@@ -24,6 +21,7 @@ const validateJWTToken = async (req, res, next) => {
 
     req.user = user;
   } catch (e) {
+    console.log(e);
     return res.status(401).json({ message: 'Expired or invalid token' });
   }
 

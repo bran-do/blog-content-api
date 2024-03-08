@@ -2,8 +2,8 @@ const generateJWTToken = require('../utils/generateJWTToken');
 
 const login = async (req, res) => {
   try {
-    const { email } = req.loggedUser;
-    const token = generateJWTToken(email);
+    const { id } = req.loggedUser;
+    const token = generateJWTToken(id);
     
     return res.status(200).json({ token });
   } catch (e) {
