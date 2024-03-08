@@ -10,6 +10,8 @@ const validateSignUp = require('./middlewares/validateSignUp');
 const validateJWTToken = require('./middlewares/validateJWTToken');
 const validateNewCategory = require('./middlewares/validateNewCategory');
 const validateNewPost = require('./middlewares/validateNewPost');
+const validatePostId = require('./middlewares/validatePostId');
+const validatePostUpdate = require('./middlewares/validatePostUpdate');
 // ...
 
 const app = express();
@@ -32,6 +34,7 @@ app.post('/categories', validateNewCategory, categoryController.create);
 app.get('/categories', categoryController.getAll);
 app.post('/post', validateNewPost, postController.create);
 app.get('/post', postController.getAll);
-app.get('/post/:id', postController.getById);
+app.get('/post/:id', validatePostId, postController.getById);
+app.put('/post/:id', validatePostUpdate, postController.update);
 
 module.exports = app;

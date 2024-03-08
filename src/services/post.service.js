@@ -18,9 +18,12 @@ const create = async (post) => {
   return newPost;
 };
 
+const update = async (updateData, id) => BlogPost.update(updateData, { where: { id } });
+
 module.exports = {
   getAll,
   getById,
   getByTitle,
   create,
+  update,
 };
