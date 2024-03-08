@@ -1,11 +1,18 @@
-const { BlogPost } = require('../models');
+const { BlogPost, User, Category } = require('../models');
 
-const getAll = () => BlogPost.findAll();
+const postFormat = {
+  include: [
+    { model: User, as: 'user', attributes: { exclude: 'password' } },
+    { model: Category, as: 'categories', through: { attributes: [] } },
+  ],
+};
+
+const getAll = () => BlogPost.findAll(postFormat);
 
 const getByTitle = (title) => BlogPost.findOne({ where: { title } });
 
-const create = async ({ title, content, userId, published, updated }) => {
-  const newPost = await BlogPost.create({ title, content, userId, published, updated });
+const create = async (post) => {
+  const newPost = await BlogPost.create(post);
   return newPost;
 };
 

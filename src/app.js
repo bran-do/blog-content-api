@@ -31,5 +31,6 @@ app.get('/user/:id', userController.getById);
 app.post('/categories', validateNewCategory, categoryController.create);
 app.get('/categories', categoryController.getAll);
 app.post('/post', validateNewPost, postController.create);
+app.get('/post', postController.getAll);
 
 module.exports = app;
