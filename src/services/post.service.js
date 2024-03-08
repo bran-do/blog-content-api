@@ -9,6 +9,8 @@ const postFormat = {
 
 const getAll = () => BlogPost.findAll(postFormat);
 
+const getById = (id) => BlogPost.findOne({ where: { id }, include: postFormat.include });
+
 const getByTitle = (title) => BlogPost.findOne({ where: { title } });
 
 const create = async (post) => {
@@ -18,6 +20,7 @@ const create = async (post) => {
 
 module.exports = {
   getAll,
+  getById,
   getByTitle,
   create,
 };
