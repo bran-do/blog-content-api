@@ -1,6 +1,6 @@
 # Blog Content API ✍️🖥️☕
 ##### PT.BR 🇧🇷
-A API **Blog Content** é uma API que gerencia os conteúdos de um blog, fornecendo operações para uma base de dados que contém entidades como Usuário, Postagem e Categoria.<br>
+A **Blog Content** é uma API que gerencia os conteúdos de um blog, fornecendo operações para uma base de dados que contém entidades como Usuário, Postagem e Categoria.<br>
 Esse projeto foi base para o estudo relacional entre entidades em um banco de dados, com endpoints criados a partir de um diagrama de entidade-relacionamento (disponível abaixo). Além disso, a API conta com autenticação de tokens para acesso.
 ##### Tecnologias utilizadas:
 - JavaScript
